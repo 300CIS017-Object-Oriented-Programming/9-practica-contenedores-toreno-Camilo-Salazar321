@@ -14,8 +14,11 @@ private:
     int nivelRanking;
     std::vector<VideoJuego*>videoJuegosInscritos;
 public:
+    Jugador();
     Jugador(std::string nickname, int nivelRanking);
     void mostrarInfoJugador();
+    void mostrarJuegosInscritos();
+    void ActualizarRanking(int nuevoRanking);
 };
 
 

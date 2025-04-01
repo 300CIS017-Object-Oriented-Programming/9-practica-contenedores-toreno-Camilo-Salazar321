@@ -14,6 +14,7 @@ private:
     std::string genero;
     int nivelDificultad;
 public:
+    VideoJuego();
     VideoJuego(std::string codigo, std::string nombre, std::string genero, int nivelDificultad);
     void mostrarInfoVideoJuego();
 
