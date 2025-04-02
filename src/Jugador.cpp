@@ -6,9 +6,9 @@
 
 #include <iostream>
 
-Jugador::Jugador(std::string nickname, int nivelRanking) {
+Jugador::Jugador(std::string nickname) {
     this->nickname = nickname;
-    this->nivelRanking = nivelRanking;
+    this->nivelRanking = 1;
 }
 
 void Jugador::mostrarInfoJugador() {
@@ -18,13 +18,20 @@ void Jugador::mostrarInfoJugador() {
 
 void Jugador::mostrarJuegosInscritos() {
     for (int i = 0; i < videoJuegosInscritos.size(); i++) {
-        std::cout << videoJuegosInscritos[i] << "\n";
+        videoJuegosInscritos[i]->mostrarInfoVideoJuego();
     }
 }
 
 void Jugador::ActualizarRanking(int nuevoRanking) {
-    if (nuevoRanking > 0 && nuevoRanking < 100) {
+    if (nuevoRanking >= 1 && nuevoRanking <= 100) {
         this->nivelRanking = nuevoRanking;
     }
+    else {
+        std::cout << "El valor de ranking seleccionado no se encuentra dentro del rango permitido"<<std::endl;
+    }
+}
+
+std::vector<VideoJuego *> Jugador::getVideoJuegosInscritos() const{
+    return videoJuegosInscritos;
 
 }

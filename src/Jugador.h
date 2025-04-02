@@ -15,12 +15,11 @@ private:
     std::vector<VideoJuego*>videoJuegosInscritos;
 public:
     Jugador();
-    Jugador(std::string nickname, int nivelRanking);
+    Jugador(std::string nickname);
     void mostrarInfoJugador();
     void mostrarJuegosInscritos();
     void ActualizarRanking(int nuevoRanking);
+    std::vector<VideoJuego *> getVideoJuegosInscritos() const;
 };
-
-
 
 #endif //JUGADOR_H

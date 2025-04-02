@@ -20,9 +20,9 @@ public:
     Torneo();
     ~Torneo();
     void registrarVideojuego(std::string codigoNuevoVideojuego);
-    void registrarJugador();
-    void inscribirJugadorEnVideojuego();
-    void mostrarVideojuegosDeJugador();
+    void registrarJugador(std::string nicknameNuevoJugador);
+    void inscribirJugadorEnVideojuego(std::string codigoVideojuego,std::string nicknameJugador);
+    void mostrarVideojuegosDeJugador(std::string nickname);
     void promedioDificultadVideojuegosInscritos(std::string nicknameJugador);
     void inicializarVideojuegos();
     void inicializarJugadores();

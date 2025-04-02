@@ -19,4 +19,10 @@ void VideoJuego::mostrarInfoVideoJuego() {
     std::cout<< "Nombre del video juego: "<<this->nombre<<std::endl;
     std::cout<< "Genero del video juego: "<<this->genero<<std::endl;
     std::cout<< "Nivel de dificultad: "<<this->nivelDificultad<<std::endl;
+    std::cout<< "-----------------------------------"<<std::endl;
 }
+
+int VideoJuego::getNivelDificultad() {
+    return this->nivelDificultad;
+}
+
