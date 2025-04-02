@@ -7,6 +7,8 @@
 #include <iostream>
 
 Torneo::Torneo() {
+   inicializarJugadores();
+   inicializarVideojuegos();
 }
 
 void Torneo::registrarVideojuego(std::string codigoNuevoVideojuego) {
@@ -86,31 +88,44 @@ void Torneo::promedioDificultadVideojuegosInscritos(std::string nicknameJugador)
 }
 
 void Torneo::inicializarVideojuegos() {
+   VideoJuego *videojuego1 = new VideoJuego("VG001", "Dark Souls III", "Acción-RPG", 5);
+   VideoJuego *videojuego2 = new VideoJuego("VG002", "The Legend of Zelda: Breath of the Wild", "Aventura/Acción", 3);
+   VideoJuego *videojuego3 = new VideoJuego("VG003", "Hollow Knight", "Metroidvania", 4);
+   VideoJuego *videojuego4 = new VideoJuego("VG004", "Stardew Valley", "Simulación/RPG", 2);
+   VideoJuego *videojuego5 = new VideoJuego("VG005", "Celeste", "Plataformas", 4);
 
+   videojuegosDisponibles["VG001"]=videojuego1;
+   videojuegosDisponibles["VG002"]=videojuego2;
+   videojuegosDisponibles["VG003"]=videojuego3;
+   videojuegosDisponibles["VG004"]=videojuego4;
+   videojuegosDisponibles["VG005"]=videojuego5;
 
 }
 
 void Torneo::inicializarJugadores() {
 
+   Jugador *jugador1 = new Jugador("ShadowHunter");
+   Jugador *jugador2 = new Jugador("PixelWarrior");
+   Jugador *jugador3 = new Jugador("LunaGamer");
 
-/*
-   for (int i = 0; i < productos.size(); i++) {
-           delete productos[i];
-       }
-       for (int i = 0; i < ventas.size(); i++) {
-           delete ventas[i];
-       }
-       for (int i = 0; i <clientes.size(); i++) {
-           delete clientes[i];
-       }
-
-       productos.clear();
-       ventas.clear();
-       clientes.clear();
- */
-
+   jugadoresRegistrados["ShadowHunter"]=jugador1;
+   jugadoresRegistrados["PixelWarrior"]=jugador2;
+   jugadoresRegistrados["LunaGamer"]=jugador3;
 }
 
-
 Torneo::~Torneo() {
+
+   for (const std::pair< std::string, Jugador*>& par : jugadoresRegistrados) {
+      for (int i=0;i<par.second->getVideoJuegosInscritos().size();i++) {
+         delete par.second->getVideoJuegosInscritos()[i];
+      }
+      par.second->getVideoJuegosInscritos().clear();
+      delete par.second;
+   }
+   jugadoresRegistrados.clear();
+
+   for (const std::pair< std::string, VideoJuego*>& par : videojuegosDisponibles) {
+      delete par.second;
+   }
+   videojuegosDisponibles.clear();
 }

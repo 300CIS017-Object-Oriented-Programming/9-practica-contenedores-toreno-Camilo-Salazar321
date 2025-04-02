@@ -16,6 +16,8 @@ class Torneo {
 private:
     std::map<std::string, VideoJuego*> videojuegosDisponibles;
     std::map<std::string, Jugador*> jugadoresRegistrados;
+    void inicializarVideojuegos();
+    void inicializarJugadores();
 public:
     Torneo();
     ~Torneo();
@@ -24,8 +26,6 @@ public:
     void inscribirJugadorEnVideojuego(std::string codigoVideojuego,std::string nicknameJugador);
     void mostrarVideojuegosDeJugador(std::string nickname);
     void promedioDificultadVideojuegosInscritos(std::string nicknameJugador);
-    void inicializarVideojuegos();
-    void inicializarJugadores();
 
 
 };
