@@ -30,7 +30,6 @@ void Torneo::registrarVideojuego(std::string codigoNuevoVideojuego) {
 
       VideoJuego *videojuegoNuevo= new VideoJuego(codigoNuevoVideojuego,nombre, genero, dificultad);
       videojuegosDisponibles[codigoNuevoVideojuego] = videojuegoNuevo;
-
       std::cout<<"El nuevo juego ha sido agregado con exito!!!";
    }
 }
@@ -43,20 +42,31 @@ void Torneo::registrarJugador(std::string nicknameNuevoJugador) {
    else {
       Jugador *jugadorNuevo= new Jugador(nicknameNuevoJugador);
       jugadoresRegistrados[nicknameNuevoJugador] = jugadorNuevo;
+      std::cout << "Jugador registrado exitosamente";
    }
 }
 
 void Torneo::inscribirJugadorEnVideojuego(std::string codigoVideojuego,std::string nicknameJugador) {
 
    if (videojuegosDisponibles.find(codigoVideojuego) != videojuegosDisponibles.end() && jugadoresRegistrados.find(nicknameJugador) != jugadoresRegistrados.end()) {
+      /*
+       *Intento de otra forma para hacerlo funcionar, no alcanzo a probarlo :(
+      if (std::find(jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().begin(), jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().end(), videojuegosDisponibles[codigoVideojuego]) == jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().end()) {
+         jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().push_back(videojuegosDisponibles[codigoVideojuego]);
+         std::cout<<"El jugador fue inscrito al videojuego exitosamente!!"<<std::endl;
+         } else {
+         std::cout << "No se puede inscribir el jugador al videojuego puesto que este ya se encuentra inscrito"<<std::endl;
+         }
+       */
+
       for (int i=0 ; i< jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().size(); i++) {
          if (jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos()[i] == videojuegosDisponibles[codigoVideojuego]) {
             std::cout << "No se puede inscribir el jugador al videojuego puesto que este ya se encuentra inscrito"<<std::endl;
             return;
          }
-         jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().push_back(videojuegosDisponibles[codigoVideojuego]);
-         std::cout<<"El jugador fue inscrito al videojuego exitosamente!!"<<std::endl;
          }
+      jugadoresRegistrados[nicknameJugador]->getVideoJuegosInscritos().push_back(videojuegosDisponibles[codigoVideojuego]);
+      std::cout<<"El jugador fue inscrito al videojuego exitosamente!!"<<std::endl;
       }
    else{
       std::cout << "No es posible registrar el jugador a este videojuego debido a que no se encuentra alguno de los dos en nuestra base de datos" << std::endl;

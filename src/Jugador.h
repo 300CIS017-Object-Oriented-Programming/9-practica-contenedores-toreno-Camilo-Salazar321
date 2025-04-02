@@ -19,7 +19,7 @@ public:
     void mostrarInfoJugador();
     void mostrarJuegosInscritos();
     void ActualizarRanking(int nuevoRanking);
-    std::vector<VideoJuego *> getVideoJuegosInscritos() const;
+    std::vector<VideoJuego *> getVideoJuegosInscritos() ;
 };
 
 #endif //JUGADOR_H

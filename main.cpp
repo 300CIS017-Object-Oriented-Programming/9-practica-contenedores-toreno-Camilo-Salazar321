@@ -33,7 +33,6 @@ int main(){
                 std::cout << "Por favor digite el codigo del nuevo juego que desea agregar: ";
                 std::cin >> codigo;
                 BattleArena.registrarVideojuego(codigo);
-                std::cout << "Videojuego registrado exitosamente";
                 break;
             }
             case 2: {
@@ -41,7 +40,6 @@ int main(){
                 std::cout << "Por favor digite el nickname del nuevo jugador que desea agregar: ";
                 std::cin >> nombre;
                 BattleArena.registrarJugador(nombre);
-                std::cout << "Jugador registrado exitosamente";
                 break;
             }
             case 3: {

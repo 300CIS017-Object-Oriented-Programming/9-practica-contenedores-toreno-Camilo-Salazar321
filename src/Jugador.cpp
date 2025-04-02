@@ -31,7 +31,7 @@ void Jugador::ActualizarRanking(int nuevoRanking) {
     }
 }
 
-std::vector<VideoJuego *> Jugador::getVideoJuegosInscritos() const{
+std::vector<VideoJuego *> Jugador::getVideoJuegosInscritos(){
     return videoJuegosInscritos;
 
 }
